@@ -7,7 +7,7 @@
     Sara has label 0
     Chris has label 1
 """
-    
+
 import sys
 from time import time
 sys.path.append("../tools/")
@@ -25,6 +25,20 @@ features_train, features_test, labels_train, labels_test = preprocess()
 #########################################################
 ### your code goes here ###
 
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+import numpy as np
+
+clf = DecisionTreeClassifier(min_samples_split=40)
+clf.fit(features_train,labels_train)
+
+print(len(features_train[0]))
+
+pred = clf.predict(features_test)
+print(pred)
+
+acc = accuracy_score(pred,labels_test)
+print(acc)
 
 #########################################################
 
